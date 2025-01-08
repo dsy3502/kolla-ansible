@@ -45,6 +45,7 @@
       retries: "{{ service_ks_register_retries }}"
       delay: "{{ service_ks_register_delay }}"
       when: item.0.enabled | default(True) | bool
+      ignore_errors: yes
 
     - name: "{{ project_name }} | Creating projects"
       kolla_toolbox:

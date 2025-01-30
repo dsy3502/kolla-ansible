@@ -26,3 +26,17 @@
     - dingoops.enabled | bool
   notify:
     - Restart dingoops container
+
+- name: Copying over dingoops.conf
+  vars:
+    dingoops: "{{ dingoops_services['dingoops'] }}"
+  merge_configs:
+    sources:
+      - "{{ role_path }}/templates/gunicorn.py"
+    dest: "{{ node_config_directory }}/dingoops/gunicorn.py"
+    mode: "0660"
+  become: true
+  when:
+    - dingoops.enabled | bool
+  notify:
+    - Restart dingoops container

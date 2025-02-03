@@ -16,7 +16,7 @@
 - name: Copying over dingoops.conf
   vars:
     dingoops: "{{ dingoops_services['dingoops'] }}"
-  merge_configs:
+  template:
     sources:
       - "{{ role_path }}/templates/dingoops.conf.j2"
     dest: "{{ node_config_directory }}/dingoops/dingoops.conf"
@@ -27,10 +27,10 @@
   notify:
     - Restart dingoops container
 
-- name: Copying over dingoops.conf
+- name: Copying over gunicorn.py
   vars:
     dingoops: "{{ dingoops_services['dingoops'] }}"
-  merge_configs:
+  template:
     sources:
       - "{{ role_path }}/templates/gunicorn.py"
     dest: "{{ node_config_directory }}/dingoops/gunicorn.py"

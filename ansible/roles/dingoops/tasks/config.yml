@@ -17,8 +17,7 @@
   vars:
     dingoops: "{{ dingoops_services['dingoops'] }}"
   template:
-    sources:
-      - "{{ role_path }}/templates/dingoops.conf.j2"
+    src: "{{ role_path }}/templates/dingoops.conf.j2"
     dest: "{{ node_config_directory }}/dingoops/dingoops.conf"
     mode: "0660"
   become: true
@@ -31,8 +30,7 @@
   vars:
     dingoops: "{{ dingoops_services['dingoops'] }}"
   template:
-    sources:
-      - "{{ role_path }}/templates/gunicorn.py"
+    src: "{{ role_path }}/templates/gunicorn.py"
     dest: "{{ node_config_directory }}/dingoops/gunicorn.py"
     mode: "0660"
   become: true

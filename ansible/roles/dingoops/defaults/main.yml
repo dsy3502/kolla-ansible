@@ -48,7 +48,7 @@ dingoops_enable_healthchecks: "{{ enable_container_healthchecks }}"
 dingoops_healthcheck_interval: "{{ default_container_healthcheck_interval }}"
 dingoops_healthcheck_retries: "{{ default_container_healthcheck_retries }}"
 dingoops_healthcheck_start_period: "{{ default_container_healthcheck_start_period }}"
-dingoops_healthcheck_test: ["CMD-SHELL", "healthcheck_curl http://{{ api_interface_address | put_address_in_context('url') }}:{{ dingoops_listen_port }}/docs"]
+dingoops_healthcheck_test: ["CMD-SHELL", "curl --max-time 10 http://{{ api_interface_address | put_address_in_context('url') }}:{{ dingoops_listen_port }}/docs"]
 dingoops_healthcheck_timeout: "{{ default_container_healthcheck_timeout }}"
 dingoops_healthcheck:
   interval: "{{ dingoops_healthcheck_interval }}"
